@@ -18,7 +18,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "serve": "npm run build && node ./node_modules/serve/bin/serve.js -u -s build",
-    "server": "node ./node_modules/json-server/lib/cli/bin.js --watch ./server/database.json -c ./server/config.json"
+    "server": "node ./node_modules/json-server/lib/cli/bin.js --watch ./server/database.json -c ./server/config.json",
+    "analyzer": "npx cra-bundle-analyzer"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,6 +37,7 @@
     ]
   },
   "devDependencies": {
+    "cra-bundle-analyzer": "^0.1.1",
     "json-server": "^0.15.1",
     "serve": "^11.3.0"
   }
