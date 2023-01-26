@@ -7,14 +7,19 @@ function TwoColumns(props) {
 		const callback = (entries, observer) => {
 			entries.forEach(entry => {
 				if(entry.isIntersecting){
+					const target = entry.target
+					const previousSibling = target.previousSibling
+
 					console.log('is intersecting:', entry.target.dataset.src)
-					entry.target.src = entry.target.dataset.src
+					target.src = target.dataset.src
+					previousSibling.srcset = previousSibling.dataset.srcset
 					observer.unobserve(entry.target)
 				}
 			})
 		}
+		console.log(props.columns[0].props.children[1])
 		const intersectionObserver = new IntersectionObserver(callback, options)
-		intersectionObserver.observe(props.columns[0].ref.current)
+		intersectionObserver.observe(props.columns[0].props.children[1].ref.current)
 
 		return () => intersectionObserver.disconnect()
 	},[props.columns])
