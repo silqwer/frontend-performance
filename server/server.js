@@ -7,7 +7,16 @@ const path = require('path')
 
 const header = {
     setHeaders: (res, path) => {
-        res.setHeader('Cache-Control', 'max-age=10')
+        console.log(path)
+
+        if (path.endsWith('.html')){
+            res.setHeader('Cache-Control', 'no-cache')
+        } else if (path.endsWith('.js') || path.endsWith('.css') || path.endsWith('.webp')) {
+            res.setHeader('Cache-Control', 'public, max-age=315360000')
+        } else {
+            res.setHeader('Cache-Control', 'no-store')
+        }
+
         res.setHeader('Expires', '-1')
         res.setHeader('Pragma', 'no-cache')
     },
